@@ -925,6 +925,11 @@ require('lazy').setup({
     end,
   },
   {
+    'tjdevries/present.nvim',
+    name = 'present',
+    opts = {},
+  },
+  {
     'tpope/vim-fugitive',
     name = 'fugitive',
     config = function()
