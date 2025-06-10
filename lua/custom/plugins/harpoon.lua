@@ -12,34 +12,42 @@ return {
 
     vim.keymap.set("n", "<leader>a", function()
       harpoon:list():add()
-    end, { desc = "[A]dd Harpoon" })
+    end, { desc = "[A]dd to Harpoon" })
+
+    vim.keymap.set("n", "<leader>pa", function()
+      harpoon:list():add()
+    end, { desc = "Har[P]oon [A]dd" })
+
+    vim.keymap.set("n", "<leader>pl", function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
+    end, { desc = "Har[P]oon [L]ist" })
 
     vim.keymap.set("n", "<C-e>", function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end, { desc = "List Harpoons" })
 
-    vim.keymap.set("n", "<leader>f", function()
+    vim.keymap.set("n", "<leader>p1", function()
       harpoon:list():select(1)
-    end, { desc = "[F]irst Harpoon" })
+    end, { desc = "Har[P]oon [1]" })
 
-    vim.keymap.set("n", "<leader>s", function()
+    vim.keymap.set("n", "<leader>p2", function()
       harpoon:list():select(2)
-    end, { desc = "[S]econd Harpoon" })
+    end, { desc = "Har[P]oon [2]" })
 
-    vim.keymap.set("n", "<leader>t", function()
+    vim.keymap.set("n", "<leader>p3", function()
       harpoon:list():select(3)
-    end, { desc = "[T]hird Harpoon" })
+    end, { desc = "Har[P]oon [3]" })
 
-    vim.keymap.set("n", "<leader>ff", function()
+    vim.keymap.set("n", "<leader>p4", function()
       harpoon:list():select(4)
-    end, { desc = "[FF]ourth Harpoon" })
+    end, { desc = "Har[P]oon [4]" })
 
     -- Toggle previous & next buffers stored within Harpoon list
-    vim.keymap.set("n", "<C-S-P>", function()
+    vim.keymap.set("n", "<C-M-P>", function()
       harpoon:list():prev()
     end, { desc = "Previous Harpoon" })
 
-    vim.keymap.set("n", "<C-S-N>", function()
+    vim.keymap.set("n", "<C-M-N>", function()
       harpoon:list():next()
     end, { desc = "Next Harpoon" })
   end,
