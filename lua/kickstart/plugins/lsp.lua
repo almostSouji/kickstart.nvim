@@ -253,7 +253,7 @@ return {
             },
           },
         },
-        --
+        mdx_analyzer = {},
         biome = {},
         lua_ls = {
           -- cmd = { ... },
