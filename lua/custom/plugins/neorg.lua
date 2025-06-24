@@ -4,6 +4,7 @@ return {
   'nvim-neorg/neorg',
   lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
   version = '*', -- Pin Neorg to the latest stable release
+  dependencies = { { 'nvim-lua/plenary.nvim', 'nvim-neorg/neorg-telescope' } },
   config = function()
     local neorg = require 'neorg'
 
@@ -26,6 +27,7 @@ return {
         ['core.pivot'] = {},
         ['core.itero'] = {},
         ['core.promo'] = {},
+        ['core.integrations.telescope'] = {},
       },
     }
 

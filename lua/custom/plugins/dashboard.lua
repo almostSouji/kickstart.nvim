@@ -21,7 +21,8 @@ return {
 
     -- dashboard buttons
     theta.buttons.val = {
-      dash.button('n', '󱓧  Open Notes', '<cmd>Neorg index<CR>'),
+      dash.button('i', '󰠮  Notes Index', '<cmd>Neorg index<CR>'),
+      dash.button('n', '󱓧  Find Notes', '<Plug>(neorg.telescope.find_norg_files)'),
       dash.button('e', '󰒲  Edit Dashboard', '<cmd>e ~/AppData/Local/nvim/lua/custom/plugins/dashboard.lua<CR>'),
       dash.button('u', '  Update plugins', '<cmd>Lazy sync<h'),
       dash.button('q', '󰅚  Quit', '<cmd>qa<CR>'),
