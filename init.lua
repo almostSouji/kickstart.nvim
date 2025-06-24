@@ -97,14 +97,14 @@ vim.g.have_nerd_font = false
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
-require('custom.options')
+require 'custom.options'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 -- NOTE: Plugin installer
-require('custom.lazy')
+require 'custom.lazy'
 
 -- [[ Basic Keymaps ]]\
-require('custom.keymaps')
+require 'custom.keymaps'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -104,6 +104,11 @@ return {
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- macroni
+      vim.keymap.set({ 'n', 'v' }, '<Leader>m', function()
+        require('telescope').extensions.macroni.saved_macros()
+      end)
     end,
   },
 }
