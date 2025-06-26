@@ -31,8 +31,15 @@ return {
       },
     }
 
-    vim.keymap.set({ 'i', 'n' }, '<M-cr>', '<plug>(neorg.itero.next-iteration)')
-    vim.wo.foldlevel = 99
-    vim.wo.conceallevel = 2
+    vim.api.nvim_create_autocmd('BufEnter', {
+      group = vim.api.nvim_create_augroup('neorg-buf-enter', { clear = true }),
+      callback = function(_)
+        if vim.bo.filetype == 'norg' then
+          vim.keymap.set('i', '<M-cr>', '<plug>(neorg.itero.next-iteration)')
+          vim.o.foldlevel = 99
+          vim.o.conceallevel = 2
+        end
+      end,
+    })
   end,
 }
