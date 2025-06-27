@@ -106,8 +106,14 @@ require 'custom.lazy'
 -- [[ Basic Keymaps ]]\
 require 'custom.keymaps'
 
--- [[ Sops cryptography ]]
-require 'custom.age'
+-- [[ Age cryptography util ]]
+local ok, _ = pcall(function()
+  vim.system { 'age', '--version' }
+end)
+
+if ok then
+  require 'custom.age'
+end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
