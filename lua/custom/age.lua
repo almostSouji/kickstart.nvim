@@ -1,4 +1,8 @@
 -- INFO: age (https://github.com/FiloSottile/age) integration
+--
+-- Inspired by: https://vim.fandom.com/wiki/Edit_gnupg-encrypted_files
+-- About ranges: http://neovim.io/doc/user/cmdline.html#%5Brange%5D
+-- % is euqivalent to 1,$ the entire file
 
 local M = {}
 
@@ -13,7 +17,7 @@ M.is_age = function()
 end
 
 vim.api.nvim_create_user_command('AgeEncrypt', function()
-  vim.cmd("'[,']!age -R " .. M.key .. '.pub --armor')
+  vim.cmd(':%!age -R ' .. M.key .. '.pub --armor')
   vim.cmd 'write'
   vim.cmd 'silent undo'
 
@@ -25,7 +29,7 @@ end, { nargs = 0 })
 
 vim.api.nvim_create_user_command('AgeDecrypt', function()
   if M.is_age() then
-    vim.cmd("'[,']!age -d -i " .. M.key)
+    vim.cmd(':%!age -d -i ' .. M.key)
   end
 end, { nargs = 0 })
 
@@ -59,7 +63,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPost', 'FileReadPost' }, {
   group = ageGroup,
   callback = function()
     if M.is_age() then
-      vim.cmd("'[,']!age -d -i " .. M.key)
+      vim.cmd(':%!age -d -i ' .. M.key)
     end
     -- restore "ch" option
     vim.o.ch = vim.b.ch_save
@@ -72,7 +76,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'FileWritePre' }, {
   pattern = '*.age*',
   group = ageGroup,
   callback = function()
-    vim.cmd("'[,']!age -R " .. M.key .. '.pub --armor')
+    vim.cmd(':%!age -R ' .. M.key .. '.pub --armor')
   end,
 })
 
