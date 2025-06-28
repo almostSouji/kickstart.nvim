@@ -40,11 +40,13 @@ return {
     -- theta.header.opts.hl = ''
 
     -- dashboard buttons
+    -- https://www.nerdfonts.com/cheat-sheet
     theta.buttons.val = {
       dash.button('i', '󰠮  Notes Index', '<cmd>Neorg index<CR>'),
-      dash.button('n', '󱓧  Find Notes', '<Plug>(neorg.telescope.find_norg_files)'),
+      dash.button('n', '󰺄  Find Notes', '<Plug>(neorg.telescope.find_norg_files)'),
+      dash.button('t', "󰃶  Today's Journal", '<cmd>Neorg journal today<CR>'),
       dash.button('e', '󰒲  Edit Dashboard', '<cmd>e ~/AppData/Local/nvim/lua/custom/plugins/dashboard.lua<CR>'),
-      dash.button('u', '  Update plugins', '<cmd>Lazy sync<CR>'),
+      dash.button('u', '  Update Lazy', '<cmd>Lazy sync<CR>'),
       dash.button('q', '󰅚  Quit', '<cmd>qa<CR>'),
     }
 

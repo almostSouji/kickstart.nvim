@@ -19,15 +19,19 @@ return {
         ['core.dirman'] = {
           config = {
             workspaces = {
-              notes = '~/notes',
+              notes = '~/norgs',
             },
             default_workspace = 'notes',
           },
         },
-        ['core.pivot'] = {},
-        ['core.itero'] = {},
-        ['core.promo'] = {},
+        ['core.summary'] = {},
         ['core.integrations.telescope'] = {},
+        ['core.integrations.treesitter'] = {
+          parser_configs = {
+            norg = {},
+            norg_meta = {},
+          },
+        },
       },
     }
 
