@@ -5,10 +5,7 @@
 -- % is euqivalent to 1,$ the entire file
 
 local M = {}
-
-local KEY_FILE = 'C:/users/souji/.ssh/id_ed'
-
-M.key = KEY_FILE
+M.key = vim.fn.expand '~/.ssh/id_ed'
 
 M.is_age = function()
   local contents = vim.api.nvim_buf_get_lines(0, 0, -1, false)
