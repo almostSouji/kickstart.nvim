@@ -25,6 +25,7 @@ return {
           },
         },
         ['core.summary'] = {},
+        ['core.export'] = {},
         ['core.integrations.telescope'] = {},
         ['core.integrations.treesitter'] = {
           parser_configs = {

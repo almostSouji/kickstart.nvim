@@ -76,69 +76,71 @@ return {
           section = 'header',
         },
         function()
-          local format = '%d/%m/%Y %X'
+          local format = '%d/%m %H:%M'
           local now = os.time()
           local time_modules = vim.tbl_filter(function(entry)
             return entry.enabled or false
           end, {
 
-            { enabled = true, title = 'Local: ' .. os.date(format), align = 'center' },
-            { enabled = true, title = 'SF: ' .. os.date(format, now - 9 * 60 * 60), align = 'center' },
+            { enabled = true, title = 'BER: ' .. os.date(format), align = 'center' },
+            { enabled = true, title = 'SFO: ' .. os.date(format, now - 9 * 60 * 60), align = 'center' },
           })
 
           time_modules[#time_modules].padding = 2
 
           return time_modules
         end,
-        { icon = '', title = 'Recent Files', padding = 1 },
         { section = 'recent_files', padding = 2 },
-        { icon = '󰘳', title = 'Quick Keys', padding = 1 },
         {
           section = 'keys',
           indent = 1,
           padding = 2,
+          gap = 1,
           hl = nil,
         },
         function()
           ---@diagnostic disable-next-line: undefined-global
-          local in_git = false and Snacks.git.get_root() ~= nil
+          local in_git = vim.o.columns > 100 and Snacks.git.get_root() ~= nil
           return {
+            pane = 2,
             {
-              title = 'Open Issues',
-              cmd = 'gh issue list -L 5',
-              enabled = in_git,
-              section = 'terminal',
-              key = 'i',
-              action = function()
-                vim.fn.jobstart('gh issue list --web', { detach = true })
-              end,
-              icon = ' ',
-              padding = 1,
-            },
-            {
+              {
+                title = 'Open Issues',
+                cmd = 'gh issue list -L 5',
+                enabled = in_git,
+                section = 'terminal',
+                key = 'i',
+                action = function()
+                  vim.fn.jobstart('gh issue list --web', { detach = true })
+                end,
+                icon = ' ',
+                padding = 1,
+              },
+              {
 
-              icon = ' ',
-              enabled = in_git,
-              section = 'terminal',
-              title = 'Open PRs',
-              cmd = 'gh pr list -L 5',
-              key = 'P',
-              action = function()
-                vim.fn.jobstart('gh pr list --web', { detach = true })
-              end,
-              padding = 1,
-            },
-            {
-              icon = ' ',
-              title = 'Git Status',
-              enabled = in_git,
-              padding = 1,
-            },
-            {
-              cmd = 'git status -s',
-              enabled = in_git,
-              section = 'terminal',
-              padding = 1,
+                icon = ' ',
+                enabled = in_git,
+                section = 'terminal',
+                title = 'Open PRs',
+                cmd = 'gh pr list -L 5',
+                key = 'P',
+                action = function()
+                  vim.fn.jobstart('gh pr list --web', { detach = true })
+                end,
+                padidng = 1,
+              },
+              {
+                icon = ' ',
+                title = 'Git Status',
+                enabled = in_git,
+                padding = 1,
+              },
+              {
+                cmd = 'git status -s',
+                enabled = in_git,
+                section = 'terminal',
+                padding = 1,
+              },
             },
           }
         end,
@@ -147,5 +149,11 @@ return {
     indent = { enabled = true },
     scope = { enabled = true },
     bigfile = { enabled = true },
+    image = {
+      doc = {
+        float = true,
+        inline = false,
+      },
+    },
   },
 }
