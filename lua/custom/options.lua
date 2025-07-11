@@ -20,18 +20,18 @@ vim.o.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-	-- vim.o.clipboard = 'unnamedplus'
-	vim.g.clipboard = {
-		name = 'OSC 52',
-		copy = {
-			['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-			['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-		},
-		paste = {
-			['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-			['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-		},
-	}
+  -- vim.o.clipboard = 'unnamedplus'
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+      ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+    },
+    paste = {
+      ['+'] = require('vim.ui.clipboard.osc52').paste '+',
+      ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+    },
+  }
 end)
 
 -- Enable break indent
@@ -66,7 +66,7 @@ vim.o.splitbelow = true
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '» ', trail = '·', lead = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
