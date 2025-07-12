@@ -19,6 +19,21 @@ local night = [[. ⭑  ⋆     .  ⭑        .    ✦     .     ⭑ +     ⋆  +
                 ' --''(_/--'  `-'\_)                   ]]
 
 vim.api.nvim_create_user_command('Dash', ':lua Snacks.dashboard.open()', { nargs = 0 })
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'LazyDone',
+  group = vim.api.nvim_create_augroup('filter_notify', { clear = true }),
+  callback = function()
+    local n = vim.notify
+    ---@diagnostic disable-next-line: duplicate-set-field
+    vim.notify = function(msg, lvl, opts)
+      if msg:match 'Terminal %*%*cmd%*%* .* failed with code' then
+        -- noop
+      else
+        n(msg, lvl, opts)
+      end
+    end
+  end,
+})
 
 return {
   'folke/snacks.nvim',
@@ -149,11 +164,11 @@ return {
     indent = { enabled = true },
     scope = { enabled = true },
     bigfile = { enabled = true },
-    image = {
-      doc = {
-        float = true,
-        inline = false,
-      },
-    },
+    -- image = {
+    --   doc = {
+    --     float = true,
+    --     inline = false,
+    --   },
+    -- },
   },
 }
