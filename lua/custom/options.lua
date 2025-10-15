@@ -102,4 +102,14 @@ for _, plugin in pairs {
   vim.g['loaded_' .. plugin] = 1
 end
 
+-- INFO: set conceallevel for markdown files for additional obsidian concealer features
+vim.api.nvim_create_autocmd('BufEnter', {
+  group = vim.api.nvim_create_augroup('markdown-buf-enter', { clear = true }),
+  callback = function(_)
+    if vim.bo.filetype == 'markdown' then
+      vim.o.conceallevel = 2
+    end
+  end,
+})
+
 -- vim: ts=2 sts=2 sw=2 et

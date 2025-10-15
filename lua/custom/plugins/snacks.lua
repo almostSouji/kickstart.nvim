@@ -78,10 +78,7 @@ return {
         pick = nil,
         ---@type snacks.dashboard.Item[]
         keys = {
-          { icon = '󰠮 ', key = 'i', desc = 'Notes Index', action = ':Neorg index' },
-          { icon = '󰺄', key = 'n', desc = 'Find Notes', action = ':Telescope neorg find_norg_files' },
-          { icon = '󰃶', key = 't', desc = 'Journal Today', action = ':Neorg journal today' },
-          { icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          { icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua Snacks.da  board.pick('oldfiles')" },
           { icon = ' ', key = 'u', desc = 'Lazy Update', action = ':Lazy sync' },
           { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
         },

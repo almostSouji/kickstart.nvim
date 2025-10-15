@@ -298,6 +298,8 @@ return {
         automatic_enable = vim.tbl_keys(servers or {}),
       }
 
+      vim.lsp.enable 'biome'
+
       -- Configure servers listed above with provided overwrites
       -- https://github.com/nvim-lua/kickstart.nvim/pull/1475/files
       for server_name, config in pairs(servers) do
@@ -344,6 +346,7 @@ return {
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
         ['markdown.mdx'] = { 'prettier' },
       },
     },

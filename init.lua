@@ -116,7 +116,7 @@ if ok then
 end
 
 require('snacks.image').langs = function()
-  return { 'markdown', 'norg' }
+  return { 'markdown' }
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

@@ -109,20 +109,6 @@ return {
       vim.keymap.set({ 'n', 'v' }, '<Leader>m', function()
         require('telescope').extensions.macroni.saved_macros()
       end)
-
-      -- neorg
-      --
-      -- neorg.telescope.backlinks.file_backlinks
-      -- neorg.telescope.backlinks.header_backlinks
-      -- neorg.telescope.find_linkable
-      -- neorg.telescope.find_norg_files
-      -- neorg.telescope.insert_file_link
-      -- neorg.telescope.insert_link
-      -- neorg.telescope.search_headings
-      -- neorg.telescope.switch_workspace
-      -- map as: <Plug>(neorg.telescope.find_norg_files)
-
-      vim.keymap.set('n', '<Leader>o', '<Plug>(neorg.telescope.find_norg_files)', { desc = 'Find N[O]rg files' })
     end,
   },
 }
